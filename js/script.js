@@ -1,12 +1,35 @@
 class Persona{
-    
-    _rut;
-    _nombre;
-    _apellido;
 
     constructor(rut = 'Sin rut', nombre = 'Sin nombre', apellido = 'Sin apellido'){
         this._rut = rut;
         this._nombre = nombre;
+        this._apellido = apellido;
+    }
+
+    get rut(){
+        return `${this._rut}`;
+    }
+
+    set rut(rut){
+        this._rut = rut;
+    }
+
+    get nombre(){
+        return `${this._nombre}`.toUpperCase();
+    }
+
+    set nombre(nombre){
+        const regex = new RegExp(/[a-z]/,'gi');
+        if(regex.test(nombre)){
+            this._nombre = nombre;
+        }
+    }
+
+    get apellido(){
+        return `${this._apellido}`;
+    }
+
+    set apellido(apellido){
         this._apellido = apellido;
     }
 
@@ -38,3 +61,11 @@ personaTres.caminar();
 personaTres.detenerse();
 
 console.log(personaUno, personaDos, personaTres);
+
+personaUno.nombre = '40';
+console.log(personaUno.nombre);
+personaUno.nombre = 'Joaquín';
+console.log(personaUno.nombre);
+
+personaDos._nombre = '60adkfhasd'
+console.log(personaDos._nombre);
