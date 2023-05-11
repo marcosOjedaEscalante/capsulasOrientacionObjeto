@@ -1,71 +1,28 @@
-class Persona{
+import { Profesor } from "./profesor.js";
+import { Estudiante } from "./estudiante.js";
 
-    constructor(rut = 'Sin rut', nombre = 'Sin nombre', apellido = 'Sin apellido'){
-        this._rut = rut;
-        this._nombre = nombre;
-        this._apellido = apellido;
-    }
+const profesorUno = new Profesor('11111111-1', 'Marcos', 'Ojeda', 500000);
+const profesorDos = new Profesor('22222222-2', 'Fanny', 'Tineo', 500000);
+const estudianteUno = new Estudiante('33333333-3', 'Camilo', 'Lavado', 60000);
+const estudianteDos = new Estudiante('44444444-4', 'Hernán', 'Alvarado', 60000);
+const estudianteTres = new Estudiante('55555555-5', 'Katherine', 'Gomez', 60000);
 
-    get rut(){
-        return `${this._rut}`;
-    }
+console.log(profesorUno, profesorDos, estudianteUno, estudianteDos, estudianteTres);
 
-    set rut(rut){
-        this._rut = rut;
-    }
+console.log(profesorUno.nombre);
+profesorUno.nombre = '325';
+console.log(profesorUno.nombre);
+profesorUno.caminar();
 
-    get nombre(){
-        return `${this._nombre}`.toUpperCase();
-    }
+estudianteUno.subsidio = 'Hola';
+console.log(estudianteUno.subsidio);
+estudianteUno.subsidio = 50;
+console.log(estudianteUno.subsidio);
 
-    set nombre(nombre){
-        const regex = new RegExp(/[a-z]/,'gi');
-        if(regex.test(nombre)){
-            this._nombre = nombre;
-        }
-    }
+profesorUno.sueldo = 'Adios';
+console.log(profesorUno.sueldo);
+profesorUno.sueldo = 10;
+console.log(profesorUno.sueldo);
 
-    get apellido(){
-        return `${this._apellido}`;
-    }
-
-    set apellido(apellido){
-        this._apellido = apellido;
-    }
-
-    caminar = () => {
-        console.log(`La persona ${this._nombre} ${this._apellido} se encuentra caminando`);
-    }
-
-    detenerse = () => {
-        console.log(`La persona ${this._nombre} ${this._apellido} se ha detenido`);
-    }
-
-}
-
-const personaUno = new Persona('11111111-1', 'Marcos', 'Ojeda');
-const personaDos = new Persona('22222222-2', 'Antonio', 'Escalante');
-const personaTres = new Persona('33333333-3', 'Mariana', 'Fonseca');
-
-console.log(personaUno._nombre);
-console.log(personaDos._nombre);
-console.log(personaTres._nombre);
-
-personaUno.caminar();
-personaUno.detenerse();
-
-personaDos.caminar();
-personaDos.detenerse();
-
-personaTres.caminar();
-personaTres.detenerse();
-
-console.log(personaUno, personaDos, personaTres);
-
-personaUno.nombre = '40';
-console.log(personaUno.nombre);
-personaUno.nombre = 'Joaquín';
-console.log(personaUno.nombre);
-
-personaDos._nombre = '60adkfhasd'
-console.log(personaDos._nombre);
+profesorUno.tomarAsistencia();
+profesorDos.tomarAsistencia();
